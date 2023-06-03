@@ -4,7 +4,6 @@ import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, Image } from
 import styles from "./popularjobs.style";
 import { COLORS, SIZES } from "../../../constants";
 import useFetch from "../../../hook/useFetch";
-// import VideoCard from "./VideoCard";
 
 const Popularjobs = () => {
   const { isLoading, error } = useFetch("search", {
@@ -12,12 +11,10 @@ const Popularjobs = () => {
     num_pages: "1",
   });
 
-  const [selectedJob, setSelectedJob] = useState(null);
-
   const videoData = [
     {
       videoId: "mJ3bGvy0WAY",
-      title: "Лорем іпсум івофіжлвоіфж філов жфіов ждфіов",
+      title: "Як правильно накладувати турнікет в домашніх умовах",
       image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/123.jpg"),
     },
     {
@@ -52,10 +49,6 @@ const Popularjobs = () => {
     },
   ];
 
-  const handleCardPress = (item) => {
-    setSelectedJob(item.videoId);
-  };
-
   const renderVideoItem = ({ item }) => {
     return (
       <TouchableOpacity
@@ -63,7 +56,9 @@ const Popularjobs = () => {
         onPress={() => handleCardPress(item)}
       >
         {item.image && <Image source={item.image} style={styles.videoImage} />}
-        <Text style={styles.videoTitle}>{item.title}</Text>
+        <View style={styles.videoDetailsContainer}>
+          <Text style={styles.videoTitle}>{item.title}</Text>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -76,7 +71,7 @@ const Popularjobs = () => {
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size="large" color={COLORS.primary} />
+          <ActivityIndicator size="large" color={COLORS.blackk} />
         ) : (
           <FlatList
             data={videoData}

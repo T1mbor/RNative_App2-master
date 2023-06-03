@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
   searchBtn: {
     width: 70,
     height: "100%",
-    backgroundColor: COLORS.tertiary,
+    backgroundColor: COLORS.blackk,
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
   },
   searchBtnImage: {
-    width: "60%",
-    height: "60%",
+    width: "70%",
+    height: "65%",
     tintColor: COLORS.white,
   },
   tabsContainer: {
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.xxLarge / 2,
     paddingHorizontal: SIZES.xLarge,
     borderRadius: SIZES.medium,
-    borderWidth: 2,
-    borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    borderWidth: 1,
+    borderColor: activeJobType === item ? COLORS.secondary : COLORS.blackk,
     backgroundColor: getTabBackgroundColor(item),
   }),
   
