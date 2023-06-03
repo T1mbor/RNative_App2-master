@@ -47,6 +47,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
       <View style={styles.tabsContainer}>
         <FlatList
           data={jobTypes}
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.tab(activeJobType, item)}

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT.medium,
     color: COLORS.black,
     backgroundColor: COLORS.gray2,
-    borderColor: COLORS.black, 
+    borderColor: COLORS.black,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     textAlign: 'center',
@@ -28,6 +28,20 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     marginTop: SIZES.medium,
+  },
+
+  videoCard: {
+    marginRight: 10, // Adjust the spacing between images
+  },
+
+  videoImage: {
+    borderColor: COLORS.green,
+    borderRadius: 4,
+    width: 200, // Adjust the width as per your requirement
+    height: 110, // Adjust the height as per your requirement
+    resizeMode: 'cover',
+    borderWidth: 1.7, // Border width
+    borderColor: COLORS.green, // Border color
   },
 });
 

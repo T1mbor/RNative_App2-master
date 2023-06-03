@@ -1,30 +1,71 @@
-import { useState } from "react";
-import { useRouter } from "expo-router";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, Image } from "react-native";
 
 import styles from "./popularjobs.style";
 import { COLORS, SIZES } from "../../../constants";
-import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import useFetch from "../../../hook/useFetch";
+// import VideoCard from "./VideoCard";
 
 const Popularjobs = () => {
-  const router = useRouter();
-  const { data, isLoading, error } = useFetch("search", {
+  const { isLoading, error } = useFetch("search", {
     query: "React developer",
     num_pages: "1",
   });
 
-  const [selectedJob, setSelectedJob] = useState();
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  const videoData = [
+    {
+      videoId: "mJ3bGvy0WAY",
+      title: "Лорем іпсум івофіжлвоіфж філов жфіов ждфіов",
+      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/123.jpg"),
+    },
+    {
+      videoId: "GMx8OsTDHfM",
+      title: "Video 2",
+      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/asd.jpg"),
+    },
+    {
+      videoId: "cFvh7qM6LdA",
+      title: "Video 3",
+      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/hqdefault.jpg"),
+    },
+    {
+      videoId: "Efq7upFiR3Y",
+      title: "Video 4",
+      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/asd.21.jpg"),
+    },
+    {
+      videoId: "Efq72pFiR0Y",
+      title: "Video 5",
+      // image: require("C:\Users\Livch\Desktop\RNative_App2-master\assets\images\icon.png"),
+    },
+    {
+      videoId: "Ef17upFiR0Y",
+      title: "Video 6",
+      // image: require("C:\Users\Livch\Desktop\RNative_App2-master\assets\images\icon.png"),
+    },
+    {
+      videoId: "Efq7up4iR0Y",
+      title: "Video 7",
+      // image: require("C:\Users\Livch\Desktop\RNative_App2-master\assets\images\icon.png"),
+    },
+  ];
 
   const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
+    setSelectedJob(item.videoId);
+  };
+
+  const renderVideoItem = ({ item }) => {
+    return (
+      <TouchableOpacity
+        style={styles.videoCard}
+        onPress={() => handleCardPress(item)}
+      >
+        {item.image && <Image source={item.image} style={styles.videoImage} />}
+        <Text style={styles.videoTitle}>{item.title}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -35,15 +76,15 @@ const Popularjobs = () => {
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size='large' color={COLORS.primary} />
-        ):
-        (
+          <ActivityIndicator size="large" color={COLORS.primary} />
+        ) : (
           <FlatList
-           
-            
-            keyExtractor={(item) => item.job_id}
-            contentContainerStyle={{ columnGap: SIZES.medium }}
+            data={videoData}
+            keyExtractor={(item) => item.videoId}
             horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingLeft: SIZES.medium }}
+            renderItem={renderVideoItem}
           />
         )}
       </View>
