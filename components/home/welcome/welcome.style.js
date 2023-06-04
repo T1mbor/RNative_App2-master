@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   
 
   tabText: (activeJobType, item) => ({
+    fontSize: SIZES.medium,
     fontFamily: FONT.bold,
     color: activeJobType === item ? COLORS.secondary : COLORS.white,
     textShadowColor: COLORS.black,

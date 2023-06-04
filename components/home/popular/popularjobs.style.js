@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { FONT, SIZES, COLORS } from "../../../constants";
 import { color } from "react-native-reanimated";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const styles = StyleSheet.create({
   container: {
@@ -37,21 +38,23 @@ const styles = StyleSheet.create({
     borderRadius:10,
     borderColor:COLORS.red,
     width: 220,
-    height: 162,
-    backgroundColor: COLORS.lightWhite,
+    height: 163,
+    backgroundColor: COLORS.blackk,
   },
 
   videoDetailsContainer: {
-    padding: 2, // Adjust the padding of the video details container
+    padding: 3, // Adjust the padding of the video details container
   },
 
   videoTitle: {
     fontFamily: FONT.bold, // Жирний шрифт
+    color: COLORS.white,
   },
   
   videoImage: {
     borderTopLeftRadius: 7,
     borderTopRightRadius: 7,
+    borderWidth:1,
     width: 216, // Adjust the width as per your requirement
     height: 118, // Adjust the height as per your requirement
     resizeMode: 'cover',
