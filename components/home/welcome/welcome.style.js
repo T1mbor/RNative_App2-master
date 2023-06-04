@@ -1,15 +1,19 @@
 import { StyleSheet } from "react-native";
 
+
+
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const getTabBackgroundColor = (item) => {
   switch (item) {
     case "Ліхтарик":
-      return COLORS.yellow;
+      return COLORS.white;
     case "Терм. виклики":
       return COLORS.green;
     case "Найближче укриття":
       return COLORS.orange;
+    case "Нотатки":
+      return COLORS.yellow;
     default:
       return COLORS.white;
   }
@@ -74,23 +78,22 @@ const styles = StyleSheet.create({
     marginBottom: SIZES.small,
     alignItems: "center"
   },
-  tab: (activeJobType, item) => ({
+  tab: (item) => ({
     paddingVertical: SIZES.xxLarge / 2,
-    paddingHorizontal: SIZES.xLarge,
+    paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
-    borderWidth: 1,
-    borderColor: activeJobType === item ? COLORS.secondary : COLORS.blackk,
+    borderWidth: 2,
+    borderColor: item ? COLORS.secondary : COLORS.blackk,
     backgroundColor: getTabBackgroundColor(item),
   }),
   
 
-  tabText: (activeJobType, item) => ({
+  tabText: (item) => ({
     fontSize: SIZES.medium,
     fontFamily: FONT.bold,
-    color: activeJobType === item ? COLORS.secondary : COLORS.white,
-    textShadowColor: COLORS.black,
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 2,
+    color: COLORS.blackk,
+    textShadowColor: COLORS.white,
+    textShadowRadius: 3,
   }),  
   
 });

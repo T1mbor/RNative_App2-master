@@ -12,11 +12,11 @@ import { useRouter } from "expo-router";
 import styles from "./welcome.style"; 
 import { icons, SIZES } from "../../../constants";
 
-const jobTypes = ["Терм. виклики", "Найближче укриття", "Ліхтарик"];
+const jobTypes = ["Терм. виклики", "Найближче укриття", "Ліхтарик", "Нотатки"];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const router = useRouter();
-  const [activeJobType, setActiveJobType] = useState("Full-time");
+  
 
   return (
     <View>
@@ -50,18 +50,17 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.tab(activeJobType, item)}
+              style={styles.tab(item)}
               onPress={() => {
-                setActiveJobType(item);
-                router.push(`/search/${item}`);
+                
               }}
             >
-              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+              <Text style={styles.tabText(item)}>{item}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item}
           contentContainerStyle={{ columnGap: SIZES.xSmall }}
-          horizontal
+            horizontal
         />
       </View>
     </View>

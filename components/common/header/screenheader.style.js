@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
   btnContainer: {
     width: 40,
     height: 40,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.lightWhite,
     borderRadius: SIZES.small / 1.25,
-    justifyContent: "center",
+    justifyContent: "center", 
     alignItems: "center",
   },
   btnImg: (dimension) => ({

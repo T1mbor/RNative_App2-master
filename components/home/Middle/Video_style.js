@@ -4,6 +4,8 @@ import { FONT, SIZES, COLORS } from "../../../constants";
 import { color } from "react-native-reanimated";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
+
+
 const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.xLarge,

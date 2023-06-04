@@ -1,24 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, Image, Linking } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, Image, Linking } from "react-native";
 
-import styles from "./popularjobs.style";
+import styles from "./Video_style";
 import { COLORS, SIZES } from "../../../constants";
-import useFetch from "../../../hook/useFetch";
 
-const Popularjobs = () => {
-  const { isLoading, error } = useFetch("search", {
-    query: "React developer",
-    num_pages: "1",
-  });
-
+const Videos = () => {
   
-      // Відкриття посилання на YouTube відео у веб-браузері
-  const handleCardPress = (item) => {
+  // Відкриття посилання на YouTube відео у веб-браузері
+  const Ytb_video_id = (item) => {
     Linking.openURL(`https://www.youtube.com/watch?v=${item.videoId}`);
   };
-
+  
+  
   const videoData = [
-    
     {
       videoId: "D7uuWeAqfmE",
       title: "Техніка безпеки під час воєнного стану",
@@ -67,7 +61,7 @@ const Popularjobs = () => {
     return (
       <TouchableOpacity
         style={styles.videoCard}
-        onPress={() => handleCardPress(item)}
+        onPress={() => Ytb_video_id(item)}
       >
         {item.image && <Image source={item.image} style={styles.videoImage} />}
         <View style={styles.videoDetailsContainer}>
@@ -84,9 +78,7 @@ const Popularjobs = () => {
       </View>
 
       <View style={styles.cardsContainer}>
-        {isLoading ? (
-          <ActivityIndicator size="large" color={COLORS.blackk} />
-        ) : (
+         
           <FlatList
             data={videoData}
             keyExtractor={(item) => item.videoId}
@@ -95,10 +87,10 @@ const Popularjobs = () => {
             contentContainerStyle={{ paddingLeft: SIZES.medium }}
             renderItem={renderVideoItem}
           />
-        )}
+        
       </View>
     </View>
   );
 };
 
-export default Popularjobs;
+export default Videos;
