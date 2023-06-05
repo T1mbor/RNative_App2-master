@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from "react-native";
-import { useRouter } from "expo-router";
+import { Camera } from "expo-camera";
 import styles from "./welcome.style";
-import Torch from 'react-native-torch';
-
 import { icons, SIZES } from "../../../constants";
 
 const ToDoTabs = ["Терм. виклики", "Найближче укриття", "Ліхтарик", "Нотатки"];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
-  const router = useRouter();
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(status === "granted");
+    })();
+  }, []);
 
   const handleFlashlightPress = () => {
     setIsFlashlightOn(!isFlashlightOn);
@@ -52,7 +57,6 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
               onPress={() => {
                 if (item === "Ліхтарик") {
                   handleFlashlightPress();
-                  toggleFlashlight();
                 }
                 if (item === "Нотатки") {
 
@@ -68,8 +72,16 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
         />
       </View>
 
-      {isFlashlightOn && (
-        <View style={styles.flashlight} />
+      {isFlashlightOn && hasCameraPermission && (
+        <Camera
+          style={styles.flashlight}
+          type={Camera.Constants.Type.back}
+          flashMode={
+            isFlashlightOn
+              ? Camera.Constants.FlashMode.torch
+              : Camera.Constants.FlashMode.off
+          }
+        />
       )}
     </View>
   );

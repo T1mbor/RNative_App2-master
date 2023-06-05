@@ -2,10 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 
-const toggleFlashlight = () => {
-  Torch.switchState(!isFlashlightOn);
-  setIsFlashlightOn(!isFlashlightOn);
-};
+
 
 
 const getTabBackgroundColor = (item, isFlashlightOn) => {
@@ -102,6 +99,11 @@ const styles = StyleSheet.create({
     textShadowColor: COLORS.white,
     textShadowRadius: 2,
   }),
+  flashlight: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+  },
 });
 
 export default styles;
