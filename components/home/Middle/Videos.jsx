@@ -5,10 +5,15 @@ import styles from "./Video_style";
 import { COLORS, SIZES } from "../../../constants";
 
 const Videos = () => {
-  
+  const [isContainerOpen, setIsContainerOpen] = useState(false);
+
   // Відкриття посилання на YouTube відео у веб-браузері
-  const Ytb_video_id = (item) => {
-    Linking.openURL(`https://www.youtube.com/watch?v=${item.videoId}`);
+  const openYouTubeVideo = (videoId) => {
+    Linking.openURL(`https://www.youtube.com/watch?v=${videoId}`);
+  };
+
+  const toggleContainer = () => {
+    setIsContainerOpen(!isContainerOpen);
   };
   
   
@@ -41,7 +46,7 @@ const Videos = () => {
     },
     {
       videoId: "3Be49B60ozQ",
-      title: "Зупинка кровотечі при пораненні голови, шиї, кінцівок.",
+      title: "Зупинка кровотечі при пораненні голови, кінцівок..",
       image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/krovotecha.png"),
     },
     
@@ -61,7 +66,7 @@ const Videos = () => {
     return (
       <TouchableOpacity
         style={styles.videoCard}
-        onPress={() => Ytb_video_id(item)}
+        onPress={() => openYouTubeVideo(item.videoId)}
       >
         {item.image && <Image source={item.image} style={styles.videoImage} />}
         <View style={styles.videoDetailsContainer}>
@@ -73,12 +78,15 @@ const Videos = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Корисні відео-інструкції та порадники</Text>
-      </View>
+      <TouchableOpacity
+        style={styles.header}
+        onPress={toggleContainer}
+      >
+        <Text style={styles.headerTitle}>Корисні відео-інструкції та порадники під час воєнного стану</Text>
+      </TouchableOpacity>
 
-      <View style={styles.cardsContainer}>
-         
+      {isContainerOpen && (
+        <View style={styles.cardsContainer}>
           <FlatList
             data={videoData}
             keyExtractor={(item) => item.videoId}
@@ -87,8 +95,8 @@ const Videos = () => {
             contentContainerStyle={{ paddingLeft: SIZES.medium }}
             renderItem={renderVideoItem}
           />
-        
-      </View>
+        </View>
+      )}
     </View>
   );
 };

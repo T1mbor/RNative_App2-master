@@ -1,17 +1,15 @@
 import { StyleSheet } from "react-native";
-
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
-
 
   poradnik: {
     borderRadius: 8,
     marginTop: SIZES.xLarge,
     marginBottom: SIZES.medium,
     backgroundColor: COLORS.gray2,
+    overflow: "hidden", // Додали overflow для обрізання змісту, якщо контейнер закритий
   },
-
   container: {
     marginTop: SIZES.xLarge,
   },
@@ -26,24 +24,22 @@ const styles = StyleSheet.create({
     fontFamily: FONT.medium,
     color: COLORS.black,
     backgroundColor: COLORS.gray2,
-    borderColor: COLORS.black, 
+    borderColor: COLORS.black,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: SIZES.medium,
-  },
-  headerBtn: {
-    fontSize: SIZES.medium,
-    fontFamily: FONT.medium,
-    color: COLORS.gray,
   },
   cardsContainer: {
     marginTop: SIZES.medium,
     marginBottom: SIZES.medium,
     gap: SIZES.small,
   },
-  
+
+  titleincards: {
+    color: COLORS.white, 
+    backgroundColor: COLORS.blackk
+  }
 });
 
 export default styles;
-

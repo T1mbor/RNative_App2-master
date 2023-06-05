@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
+    paddingTop: 10,
+    height: 70,
     color: COLORS.white,
     backgroundColor: COLORS.blackk,
     borderColor: COLORS.black,
     borderWidth: 2,
-    borderRadius: 3,
+    borderRadius: 7,
     textAlign: 'center',
   },
   headerBtn: {
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
 
   videoDetailsContainer: {
-    padding: 3, // Adjust the padding of the video details container
+    padding: 4, // Adjust the padding of the video details container
   },
 
   videoTitle: {
