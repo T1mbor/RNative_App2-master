@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     height: 70,
     color: COLORS.white,
-    backgroundColor: COLORS.blackk,
+    backgroundColor: COLORS.black,
     borderColor: COLORS.black,
     borderWidth: 2,
     borderRadius: 7,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderColor:COLORS.red,
     width: 220,
     height: 163,
-    backgroundColor: COLORS.blackk,
+    backgroundColor: COLORS.black,
   },
 
   videoDetailsContainer: {

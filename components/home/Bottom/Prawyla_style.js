@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 
   titleincards: {
     color: COLORS.white, 
-    backgroundColor: COLORS.blackk
+    backgroundColor: COLORS.black
   }
 });
 

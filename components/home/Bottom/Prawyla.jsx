@@ -3,8 +3,9 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import styles from "./Prawyla_style";
 import { COLORS } from "../../../constants";
-import { Transition } from "react-native-reanimated";
 
+
+  // Тут створення закритого конейнера порад
 const Prawyla = () => {
   const [isContainerOpen, setIsContainerOpen] = useState(false);
 
@@ -12,6 +13,7 @@ const Prawyla = () => {
     setIsContainerOpen(!isContainerOpen);
   };
 
+  //Тут тексти порад
   return (
     <View style={styles.poradnik}>
       <TouchableOpacity style={styles.header} onPress={toggleContainer}>

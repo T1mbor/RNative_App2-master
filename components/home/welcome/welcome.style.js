@@ -1,27 +1,37 @@
 import { StyleSheet } from "react-native";
-
-
-
 import { COLORS, FONT, SIZES } from "../../../constants";
 
-const getTabBackgroundColor = (item) => {
+
+const toggleFlashlight = () => {
+  Torch.switchState(!isFlashlightOn);
+  setIsFlashlightOn(!isFlashlightOn);
+};
+
+
+const getTabBackgroundColor = (item, isFlashlightOn) => {
+  if (item === "Ліхтарик") {
+    return isFlashlightOn ? COLORS.yellow : COLORS.white;
+  }
   switch (item) {
-    case "Ліхтарик":
-      return COLORS.white;
     case "Терм. виклики":
       return COLORS.green;
     case "Найближче укриття":
       return COLORS.orange;
     case "Нотатки":
-      return COLORS.yellow;
+      return COLORS.beruz;
     default:
       return COLORS.white;
   }
 };
 
 const styles = StyleSheet.create({
+
   container: {
-    width: "100%",
+    flex: 1,
+  },
+  headerContainer: {
+    marginTop: SIZES.xLarge,
+    alignItems: "center",
   },
   userName: {
     fontFamily: FONT.regular,
@@ -49,10 +59,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: SIZES.medium,
     height: "100%",
-    borderColor: COLORS.black, // Колір обводки
-    borderWidth: 2, // Товщина обводки
+    borderColor: COLORS.black,
+    borderWidth: 2,
   },
-  
   searchInput: {
     fontFamily: FONT.regular,
     width: "100%",
@@ -62,7 +71,7 @@ const styles = StyleSheet.create({
   searchBtn: {
     width: 70,
     height: "100%",
-    backgroundColor: COLORS.blackk,
+    backgroundColor: COLORS.black,
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
@@ -76,26 +85,23 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: SIZES.xLarge,
     marginBottom: SIZES.small,
-    alignItems: "center"
+    alignItems: "center",
   },
-  tab: (item) => ({
+  tab: (item, isFlashlightOn) => ({
     paddingVertical: SIZES.xxLarge / 2,
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 2,
-    borderColor: item ? COLORS.secondary : COLORS.blackk,
-    backgroundColor: getTabBackgroundColor(item),
+    borderColor: item ? COLORS.secondary : COLORS.black,
+    backgroundColor: getTabBackgroundColor(item, isFlashlightOn),
   }),
-  
-
   tabText: (item) => ({
     fontSize: SIZES.medium,
     fontFamily: FONT.bold,
-    color: COLORS.blackk,
+    color: COLORS.black,
     textShadowColor: COLORS.white,
-    textShadowRadius: 3,
-  }),  
-  
+    textShadowRadius: 2,
+  }),
 });
 
 export default styles;

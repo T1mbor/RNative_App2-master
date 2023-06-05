@@ -9,7 +9,9 @@ const COLORS = {
   yellow: "#FFD24C",
   orange: "#FF7754",
 
-  blackk: "#000000",
+  black: "#000000",
+
+  beruz: "#34ebcc",
 
   gray: "#83829A",
   gray2: "#C1C0C8",
