@@ -1,32 +1,43 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
 import { COLORS, icons, images, SIZES } from "../constants";
-import {
-  Prawyla,
-  Videos,
-  ScreenHeaderBtn,
-  Welcome,
-} from "../components";
+import { Prawyla, Videos, ScreenHeaderBtn, Welcome } from "../components";
 
 const Home = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
+  const [warDay, setWarDay] = useState(468);
+
+  useEffect(() => {
+    const updateWarDay = () => {
+      const now = new Date();
+      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+      setTimeout(() => {
+        setWarDay((prevDay) => prevDay + 1);
+      }, timeUntilMidnight);
+    };
+
+    updateWarDay();
+
+    // Перевірка таймера
+    // setTimeout(() => {
+    //   setWarDay((prevDay) => prevDay + 1);
+    // }, 3000);
+  }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.gray }}>
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
-          headerLeft: () => (
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' />
-          ),
-          headerRight: () => (
-            <ScreenHeaderBtn iconUrl={images.profile} dimension='100%' />
-          ),
-          headerTitle: "",
+          headerLeft: () => <ScreenHeaderBtn iconUrl={icons.clock} dimension="80%" />,
+          headerRight: () => <ScreenHeaderBtn iconUrl={images.alert} dimension="150%" />,
+          headerTitle: `День Війни: ${warDay}`,
         }}
       />
 
@@ -37,17 +48,12 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
-          <Welcome
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            handleClick={() => {
-              if (searchTerm) {
-                router.push(`/search/${searchTerm}`)
-              }
-            }}
-          />
+          <Welcome />
+
+           {/* <ShelterMap /> */}
 
           <Videos />
+
           <Prawyla />
         </View>
       </ScrollView>

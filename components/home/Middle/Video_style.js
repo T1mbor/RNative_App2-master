@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     height: 163,
     backgroundColor: COLORS.black,
   },
+  
 
   videoDetailsContainer: {
     padding: 4, // Adjust the padding of the video details container

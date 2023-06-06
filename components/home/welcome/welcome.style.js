@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   userName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.large,
-    color: COLORS.secondary,
+    color: COLORS.white,
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: COLORS.primary,
+    color: COLORS.white,
     marginTop: 2,
   },
   searchContainer: {

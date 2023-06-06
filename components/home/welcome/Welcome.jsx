@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, FlatList } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { WebView } from "react-native-webview";
 import styles from "./welcome.style";
-import { Asset } from "expo-asset";
+import MapView from "react-native-maps";
+import { StatusBar } from "expo-status-bar";
 import { icons, SIZES } from "../../../constants";
 
-const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик "];
+
+const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик"];
+
+
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
@@ -15,6 +19,8 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
     setIsFlashlightOn(!isFlashlightOn);
   };
 
+  
+  
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -37,12 +43,15 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
                 if (item === "Нотатки") {
                   // Обробка вкладки з нотатками
                 }
+                if (item === "Терм. виклики") {
+                  // Обробка вкладки з терміновими викликами
+                }
               }}
             >
               {item === "Ліхтарик" ? (
                 <MaterialIcons
                   name={isFlashlightOn ? "flash-on" : "flash-off"}
-                  size={25}
+                  size={24} 
                   color={isFlashlightOn ? "white" : "black"}
                 />
               ) : (
@@ -60,3 +69,29 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 };
 
 export default Welcome;
+
+
+
+
+// export default function AlertMap() {
+//   return (
+//     <View style={styles.container}>
+//       <MapView>
+//       </MapView>
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent:"center",
+//   },
+//   map: {
+//     width:"100%",
+//     height:"100%",
+//   },  
+// });

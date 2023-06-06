@@ -1,5 +1,5 @@
-import profile from "../assets/images/icon.png";
+import alert from "../assets/images/air_alert.png";
 
 export default {
-  profile,
+  alert,
 };

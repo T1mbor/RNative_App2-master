@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList, Image, Linking } from "react-native";
-
 import styles from "./Video_style";
 import { COLORS, SIZES } from "../../../constants";
 
@@ -21,44 +20,44 @@ const Videos = () => {
     {
       videoId: "D7uuWeAqfmE",
       title: "Техніка безпеки під час воєнного стану",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/bezpeka.png"),
+      image: require("../../../assets/bezpeka.png"),
     },
     
     {
       videoId: "HEirZI8bQCo",
       title: "Правила поведінки під час повітряної тривоги",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/mapa_tryvoga.png"),
+      image: require("../../../assets/mapa_tryvoga.png"),
     },
     {
       videoId: "XAs_uq3T8Ps",
       title: "Інтерактивний урок із мінної безпеки",
-       image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/minna_bezp.png"),
+       image: require("../../../assets/minna_bezp.png"),
     },
     {
       videoId: "tnCoOfKNpms",
       title: "Аптечка: що важливо взяти з собою у сховище",
-       image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/aptechka.png"),
+       image: require("../../../assets/aptechka.png"),
     },
     {
       videoId: "hRJPyIh_3gs",
       title: "єВорог: Побачили ворожу техніку чи солдатів?",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/voroji_sold.png"),
+      image: require("../../../assets/voroji_sold.png"),
     },
     {
       videoId: "3Be49B60ozQ",
       title: "Зупинка кровотечі при пораненні голови, кінцівок..",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/krovotecha.png"),
+      image: require("../../../assets/krovotecha.png"),
     },
     
     {
       videoId: "CHyRYg7ulLQ",
       title: "Як не нашкодити своїм: правила поведінки в мережі",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/cyber_bezpeka.png"),
+      image: require("../../../assets/cyber_bezpeka.png"),
     },
     {
       videoId: "6mOmRUe1OqU",
       title: "Безпека дорожнього руху під час війни",
-      image: require("C:/Users/Livch/Desktop/RNative_App2-master/assets/avto_ruh.png"),
+      image: require("../../../assets/avto_ruh.png"),
     }, 
   ];
 

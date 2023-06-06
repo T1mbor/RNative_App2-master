@@ -9,10 +9,13 @@ import location from "../assets/icons/location.png";
 import chevronLeft from '../assets/icons/chevron-left.png';
 import chevronRight from '../assets/icons/chevron-right.png';
 import flash from '../assets/icons/flash.png';
+import clock from '../assets/icons/clock.png';
+
 
 export default {
   flash,
   heart,
+  clock,
   menu,
   search,
   filter,
