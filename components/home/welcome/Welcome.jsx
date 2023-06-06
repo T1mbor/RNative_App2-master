@@ -6,7 +6,7 @@ import styles from "./welcome.style";
 import { Asset } from "expo-asset";
 import { icons, SIZES } from "../../../constants";
 
-const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик"];
+const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик "];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
@@ -26,7 +26,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
       <View style={styles.tabsContainer}>
         <FlatList
           data={ToDoTabs}
-          showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}  
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.tab(item, isFlashlightOn)}
