@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from "react-native";
-import { Camera } from "expo-camera";
 import { MaterialIcons } from "@expo/vector-icons";
+import { WebView } from "react-native-webview";
 import styles from "./welcome.style";
+import { Asset } from "expo-asset";
 import { icons, SIZES } from "../../../constants";
 
-const ToDoTabs = ["Терм. виклики", "Найближче укриття", "Нотатки", "Ліхтарик"];
+const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик"];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
@@ -21,24 +22,6 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
         <Text style={styles.welcomeMessage}>Ніколи не зашкодить переглянути правила безпеки</Text>
       </View>
 
-      <View style={styles.searchContainer}>
-        <View style={styles.searchWrapper}>
-          <TextInput
-            style={styles.searchInput}
-            value={searchTerm}
-            onChangeText={(text) => setSearchTerm(text)}
-            placeholder='Оберіть вашу область'
-          />
-        </View>
-
-        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
-          <Image
-            source={icons.search}
-            resizeMode='contain'
-            style={styles.searchBtnImage}
-          />
-        </TouchableOpacity>
-      </View>
 
       <View style={styles.tabsContainer}>
         <FlatList
@@ -52,15 +35,15 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
                   handleFlashlightPress();
                 }
                 if (item === "Нотатки") {
-                  // Handle notes tab
+                  // Обробка вкладки з нотатками
                 }
               }}
             >
               {item === "Ліхтарик" ? (
                 <MaterialIcons
                   name={isFlashlightOn ? "flash-on" : "flash-off"}
-                  size={24}
-                  color={isFlashlightOn ? "yellow" : "black"}
+                  size={25}
+                  color={isFlashlightOn ? "white" : "black"}
                 />
               ) : (
                 <Text style={styles.tabText(item)}>{item}</Text>
@@ -68,7 +51,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item}
-          contentContainerStyle={{ columnGap: SIZES.xSmall }}
+          contentContainerStyle={{ columnGap: SIZES.small }}
           horizontal
         />
       </View>

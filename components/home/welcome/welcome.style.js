@@ -11,11 +11,9 @@ const getTabBackgroundColor = (item, isFlashlightOn) => {
   }
   switch (item) {
     case "Терм. виклики":
-      return COLORS.green;
-    case "Найближче укриття":
-      return COLORS.orange;
-    case "Нотатки":
       return COLORS.beruz;
+    case "Нотатки":
+      return COLORS.yellow;
     default:
       return COLORS.white;
   }
@@ -60,25 +58,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.black,
     borderWidth: 2,
   },
-  searchInput: {
-    fontFamily: FONT.regular,
-    width: "100%",
-    height: "100%",
-    paddingHorizontal: SIZES.medium,
-  },
-  searchBtn: {
-    width: 70,
-    height: "100%",
-    backgroundColor: COLORS.black,
-    borderRadius: SIZES.medium,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  searchBtnImage: {
-    width: "70%",
-    height: "65%",
-    tintColor: COLORS.white,
-  },
   tabsContainer: {
     width: "100%",
     marginTop: SIZES.xLarge,
@@ -87,7 +66,7 @@ const styles = StyleSheet.create({
   },
   tab: (item, isFlashlightOn) => ({
     paddingVertical: SIZES.xxLarge / 2,
-    paddingHorizontal: SIZES.small,
+    paddingHorizontal: SIZES.medium,
     borderRadius: SIZES.medium,
     borderWidth: 2,
     borderColor: item ? COLORS.secondary : COLORS.black,
