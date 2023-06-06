@@ -23,6 +23,7 @@ const getTabBackgroundColor = (item, isFlashlightOn) => {
 
 const styles = StyleSheet.create({
 
+
   container: {
     flex: 1,
   },

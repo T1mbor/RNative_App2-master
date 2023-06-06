@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from "react-native";
 import { Camera } from "expo-camera";
+import { MaterialIcons } from "@expo/vector-icons";
 import styles from "./welcome.style";
 import { icons, SIZES } from "../../../constants";
 
-const ToDoTabs = ["Терм. виклики", "Найближче укриття", "Ліхтарик", "Нотатки"];
+const ToDoTabs = ["Терм. виклики", "Найближче укриття", "Нотатки", "Ліхтарик"];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
-  const [hasCameraPermission, setHasCameraPermission] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasCameraPermission(status === "granted");
-    })();
-  }, []);
 
   const handleFlashlightPress = () => {
     setIsFlashlightOn(!isFlashlightOn);
@@ -59,11 +52,19 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
                   handleFlashlightPress();
                 }
                 if (item === "Нотатки") {
-
+                  // Handle notes tab
                 }
               }}
             >
-              <Text style={styles.tabText(item)}>{item}</Text>
+              {item === "Ліхтарик" ? (
+                <MaterialIcons
+                  name={isFlashlightOn ? "flash-on" : "flash-off"}
+                  size={24}
+                  color={isFlashlightOn ? "yellow" : "black"}
+                />
+              ) : (
+                <Text style={styles.tabText(item)}>{item}</Text>
+              )}
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item}
@@ -71,18 +72,6 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
           horizontal
         />
       </View>
-
-      {isFlashlightOn && hasCameraPermission && (
-        <Camera
-          style={styles.flashlight}
-          type={Camera.Constants.Type.back}
-          flashMode={
-            isFlashlightOn
-              ? Camera.Constants.FlashMode.torch
-              : Camera.Constants.FlashMode.off
-          }
-        />
-      )}
     </View>
   );
 };
