@@ -15,49 +15,49 @@ const Videos = () => {
     setIsContainerOpen(!isContainerOpen);
   };
   
-  
+  // Тут відео з YouTube
   const videoData = [
     {
       videoId: "D7uuWeAqfmE",
       title: "Техніка безпеки під час воєнного стану",
-      image: require("../../../assets/bezpeka.png"),
+      image: require("../../../assets/images/bezpeka.png"),
     },
     
     {
       videoId: "HEirZI8bQCo",
       title: "Правила поведінки під час повітряної тривоги",
-      image: require("../../../assets/mapa_tryvoga.png"),
+      image: require("../../../assets/images/mapa_tryvoga.png"),
     },
     {
       videoId: "XAs_uq3T8Ps",
       title: "Інтерактивний урок із мінної безпеки",
-       image: require("../../../assets/minna_bezp.png"),
+       image: require("../../../assets/images/minna_bezp.png"),
     },
     {
       videoId: "tnCoOfKNpms",
       title: "Аптечка: що важливо взяти з собою у сховище",
-       image: require("../../../assets/aptechka.png"),
+       image: require("../../../assets/images/aptechka.png"),
     },
     {
       videoId: "hRJPyIh_3gs",
       title: "єВорог: Побачили ворожу техніку чи солдатів?",
-      image: require("../../../assets/voroji_sold.png"),
+      image: require("../../../assets/images/voroji_sold.png"),
     },
     {
       videoId: "3Be49B60ozQ",
       title: "Зупинка кровотечі при пораненні голови, кінцівок..",
-      image: require("../../../assets/krovotecha.png"),
+      image: require("../../../assets/images/krovotecha.png"),
     },
     
     {
       videoId: "CHyRYg7ulLQ",
       title: "Як не нашкодити своїм: правила поведінки в мережі",
-      image: require("../../../assets/cyber_bezpeka.png"),
+      image: require("../../../assets/images/cyber_bezpeka.png"),
     },
     {
       videoId: "6mOmRUe1OqU",
       title: "Безпека дорожнього руху під час війни",
-      image: require("../../../assets/avto_ruh.png"),
+      image: require("../../../assets/images/avto_ruh.png"),
     }, 
   ];
 

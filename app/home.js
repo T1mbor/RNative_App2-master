@@ -48,13 +48,19 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
+          
+          
+
           <Welcome />
 
-           {/* <ShelterMap /> */}
-
+          
+          
           <Videos />
 
+
           <Prawyla />
+          
+
         </View>
       </ScrollView>
     </SafeAreaView>

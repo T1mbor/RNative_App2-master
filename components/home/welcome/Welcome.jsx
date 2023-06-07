@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, TextInput, StyleSheet, StatusBar, TouchableOpacity, Image, FlatList } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { WebView } from "react-native-webview";
 import styles from "./welcome.style";
-import MapView from "react-native-maps";
-import { StatusBar } from "expo-status-bar";
 import { icons, SIZES } from "../../../constants";
 
-
 const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик"];
-
-
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const [isFlashlightOn, setIsFlashlightOn] = useState(false);
@@ -19,15 +14,16 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
     setIsFlashlightOn(!isFlashlightOn);
   };
 
-  
-  
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.userName}>Вітання, "Ім'я"</Text>
-        <Text style={styles.welcomeMessage}>Ніколи не зашкодить переглянути правила безпеки</Text>
+      <View style={styles.mapContainer}>
+        <WebView 
+          source={{ uri: "https://www.google.com/maps/d/u/0/embed?mid=1nv3QreO1QS5_AmRRNLHXu7u99sKJ6JRR" }}
+          style={styles.map}
+          scrollEnabled={false} // Вимкнути скролінг мапи
+        />
       </View>
-
+      <StatusBar style="auto" />
 
       <View style={styles.tabsContainer}>
         <FlatList
@@ -69,29 +65,3 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 };
 
 export default Welcome;
-
-
-
-
-// export default function AlertMap() {
-//   return (
-//     <View style={styles.container}>
-//       <MapView>
-//       </MapView>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent:"center",
-//   },
-//   map: {
-//     width:"100%",
-//     height:"100%",
-//   },  
-// });

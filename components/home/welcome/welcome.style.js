@@ -21,6 +21,25 @@ const getTabBackgroundColor = (item, isFlashlightOn) => {
 
 const styles = StyleSheet.create({
 
+  
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent:"center",
+  },
+
+  mapContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  map: {
+    flex: 1,
+    width: 400,
+    height: 400,
+  },  
 
   container: {
     flex: 1,
@@ -66,7 +85,7 @@ const styles = StyleSheet.create({
   },
   tab: (item, isFlashlightOn) => ({
     paddingVertical: SIZES.xxLarge / 2,
-    paddingHorizontal: SIZES.medium,
+    paddingHorizontal: SIZES.large,
     borderRadius: SIZES.medium,
     borderWidth: 2,
     borderColor: item ? COLORS.secondary : COLORS.black,

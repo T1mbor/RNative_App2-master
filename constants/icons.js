@@ -11,7 +11,6 @@ import chevronRight from '../assets/icons/chevron-right.png';
 import flash from '../assets/icons/flash.png';
 import clock from '../assets/icons/clock.png';
 
-
 export default {
   flash,
   heart,
