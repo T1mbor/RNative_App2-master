@@ -5,61 +5,45 @@ import { WebView } from "react-native-webview";
 import styles from "./welcome.style";
 import { icons, SIZES } from "../../../constants";
 
-const ToDoTabs = ["Терм. виклики", "Нотатки", "Ліхтарик"];
+const Welcome = (searchTerm, setSearchTerm, handleClick) => {
+  const [searchQuery, setSearchQuery] = useState("");
 
-const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
-  const [isFlashlightOn, setIsFlashlightOn] = useState(false);
-
-  const handleFlashlightPress = () => {
-    setIsFlashlightOn(!isFlashlightOn);
+  const handleSearch = () => {
+    // Виконати пошук зі searchQuery
+    // Ваш код для пошуку на мапі тут
+    console.log("Виконати пошук зі значенням:", searchQuery);
   };
 
   return (
     <View style={styles.container}>
+      
+      <View style={styles.searchContainer}>
+        <View style={styles.searchWrapper}>
+          <TextInput
+            style={styles.searchInput}
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+            placeholder='Оберіть ваш обласний центр'
+          />
+        </View>
+
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
+          <Image
+            source={icons.search}
+            resizeMode='contain'
+            style={styles.searchBtnImage}
+          />
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.mapContainer}>
-        <WebView 
+        <WebView
           source={{ uri: "https://www.google.com/maps/d/u/0/embed?mid=1nv3QreO1QS5_AmRRNLHXu7u99sKJ6JRR" }}
           style={styles.map}
           scrollEnabled={false} // Вимкнути скролінг мапи
         />
       </View>
-      <StatusBar style="auto" />
 
-      <View style={styles.tabsContainer}>
-        <FlatList
-          data={ToDoTabs}
-          showsHorizontalScrollIndicator={false}  
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.tab(item, isFlashlightOn)}
-              onPress={() => {
-                if (item === "Ліхтарик") {
-                  handleFlashlightPress();
-                }
-                if (item === "Нотатки") {
-                  // Обробка вкладки з нотатками
-                }
-                if (item === "Терм. виклики") {
-                  // Обробка вкладки з терміновими викликами
-                }
-              }}
-            >
-              {item === "Ліхтарик" ? (
-                <MaterialIcons
-                  name={isFlashlightOn ? "flash-on" : "flash-off"}
-                  size={24} 
-                  color={isFlashlightOn ? "white" : "black"}
-                />
-              ) : (
-                <Text style={styles.tabText(item)}>{item}</Text>
-              )}
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item}
-          contentContainerStyle={{ columnGap: SIZES.small }}
-          horizontal
-        />
-      </View>
     </View>
   );
 };

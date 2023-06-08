@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Stack, useRouter } from "expo-router";
+import moment from "moment-timezone";
 
 import { COLORS, icons, images, SIZES } from "../constants";
 import { Prawyla, Videos, ScreenHeaderBtn, Welcome } from "../components";
 
 const Home = () => {
-  const router = useRouter();
-  const warStartDate = new Date(2022, 1, 24); // 24 лютого 2022 року
+  
+  const warStartDate = moment.tz("2022-02-24", "Europe/Kiev"); // 24 лютого 2022 року, київська таймзона
   const [daysSinceWarStart, setDaysSinceWarStart] = useState(0);
 
   useEffect(() => {
     const updateDaysSinceWarStart = () => {
-      const now = new Date();
-      const timeDifference = now.getTime() - warStartDate.getTime();
-      const daysPassed = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+      const now = moment.tz("Europe/Kiev"); // Поточна дата та час в київській таймзоні
+      const daysPassed = now.diff(warStartDate, "days");
 
       setDaysSinceWarStart(daysPassed);
     };
@@ -29,8 +29,7 @@ const Home = () => {
           headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
           headerLeft: () => <ScreenHeaderBtn iconUrl={icons.clock} dimension="80%" />,
-          headerRight: () => <ScreenHeaderBtn iconUrl={images.alert} dimension="150%" />,
-          headerTitle: `День Війни: ${daysSinceWarStart}`,
+          headerTitle: `День повном-вторгнення: ${daysSinceWarStart}`,
         }}
       />
 
@@ -41,19 +40,11 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
-          
-          
-
           <Welcome />
 
-          
-          
           <Videos />
 
-
           <Prawyla />
-          
-
         </View>
       </ScrollView>
     </SafeAreaView>

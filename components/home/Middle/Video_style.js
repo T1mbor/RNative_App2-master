@@ -1,8 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { FONT, SIZES, COLORS } from "../../../constants";
-import { color } from "react-native-reanimated";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+
 
 
 
