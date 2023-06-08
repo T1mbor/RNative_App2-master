@@ -7,26 +7,19 @@ import { Prawyla, Videos, ScreenHeaderBtn, Welcome } from "../components";
 
 const Home = () => {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [warDay, setWarDay] = useState(468);
+  const warStartDate = new Date(2022, 1, 24); // 24 лютого 2022 року
+  const [daysSinceWarStart, setDaysSinceWarStart] = useState(0);
 
   useEffect(() => {
-    const updateWarDay = () => {
+    const updateDaysSinceWarStart = () => {
       const now = new Date();
-      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-      const timeUntilMidnight = midnight.getTime() - now.getTime();
+      const timeDifference = now.getTime() - warStartDate.getTime();
+      const daysPassed = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
 
-      setTimeout(() => {
-        setWarDay((prevDay) => prevDay + 1);
-      }, timeUntilMidnight);
+      setDaysSinceWarStart(daysPassed);
     };
 
-    updateWarDay();
-
-    // Перевірка таймера
-    // setTimeout(() => {
-    //   setWarDay((prevDay) => prevDay + 1);
-    // }, 3000);
+    updateDaysSinceWarStart();
   }, []);
 
   return (
@@ -37,7 +30,7 @@ const Home = () => {
           headerShadowVisible: false,
           headerLeft: () => <ScreenHeaderBtn iconUrl={icons.clock} dimension="80%" />,
           headerRight: () => <ScreenHeaderBtn iconUrl={images.alert} dimension="150%" />,
-          headerTitle: `День Війни: ${warDay}`,
+          headerTitle: `День Війни: ${daysSinceWarStart}`,
         }}
       />
 
